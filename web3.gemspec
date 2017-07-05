@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'koinex_web3'
+  s.name        = 'web3'
   s.version     = '0.0.0'
   s.date        = '2017-07-01'
   s.summary     = "Koinex Ruby wrapper on geth rpc calls"
