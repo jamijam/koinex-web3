@@ -116,17 +116,17 @@ include Web3::TxpoolCalls
   # Convenience function to simply send ether from one account to another, using
   # the default gas settings.
   # This requires the personal api to be active. See https://github.com/ethereum/go-ethereum/wiki/Management-APIs
-  def sendEther(from_address, to_address, ether, password)
+  def sendEther(from_address, to_address, ether, password, gas, gasPrice)
     trans = {}
     trans["from"] = from_address
     trans["to"] = to_address
     trans["value"] = ether_to_0xwei(ether)
-#    if gas != nil
-#        trans["gas"] = to_hex(gas) #should this to_hex or to_0x?
-#    end
-#    if gasPrice != nil
-#      trans["gasPrice"] = to_hex(gasPrice)
-#    end
+    if gas != nil
+      trans["gas"] = to_hex(gas) #should this to_hex or to_0x?
+    end
+    if gasPrice != nil
+      trans["gasPrice"] = to_hex(gasPrice)
+    end
     personal_signAndSendTransaction(trans, password)
   end
 
