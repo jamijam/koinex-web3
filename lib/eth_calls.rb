@@ -113,7 +113,22 @@ module Web3::EthCalls
     response["result"]
   end
 
-  def eth_estimateGas(trans_object)
+  def eth_estimateGasOld(trans_object)
+    response = do_request("eth_estimateGas",[trans_object])
+    response["result"]
+  end
+
+  def eth_estimateGasNew(from_address, to_address, ether, password, gas, gasPrice)
+    trans = {}
+    trans["from"] = from_address
+    trans["to"] = to_address
+    trans["value"] = ether_to_0xwei(ether)
+    if gas != nil
+      trans["gas"] = to_0x(gas) #should this to_hex or to_0x?
+    end
+    if gasPrice != nil
+      trans["gasPrice"] = to_0x(gasPrice)
+    end
     response = do_request("eth_estimateGas",[trans_object])
     response["result"]
   end
