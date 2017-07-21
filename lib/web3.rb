@@ -122,10 +122,10 @@ include Web3::TxpoolCalls
     trans["to"] = to_address
     trans["value"] = ether_to_0xwei(ether)
     if gas != nil
-      trans["gas"] = to_0x(gas) #should this to_hex or to_0x?
+      trans["gas"] = to_hex(gas) #should this to_hex or to_0x?
     end
     if gasPrice != nil
-      trans["gasPrice"] = to_0x(gasPrice)
+      trans["gasPrice"] = to_hex(gasPrice)
     end
     personal_signAndSendTransaction(trans, password)
   end
