@@ -129,7 +129,7 @@ module Web3::EthCalls
     if gasPrice != nil
       trans["gasPrice"] = to_0x(gasPrice)
     end
-    response = do_request("eth_estimateGas",[trans_object])
+    response = do_request("eth_estimateGas",[trans])
     response["result"]
   end
 
